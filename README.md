@@ -124,7 +124,7 @@ Exemplo de conteúdo:
 ```
 
 > **Nota:** <br>
-A pasta 'site' presente no diretório contém uma landing page criada especialmente para o projeto. No entanto, para facilitar a didática, o exemplo será algo mais enxuto. [(acesse o site)](https://github.com/IgorLGomes/Servidor-Web-com-Monitoramento)
+No diretório contém uma landing page criada especialmente para o projeto. No entanto, para facilitar a didática, o exemplo será algo mais enxuto. [(acesse o site)]([https://github.com/IgorLGomes/Servidor-Web-com-Monitoramento](https://IgorLGomes.github.io/Servidor-Web-com-Monitoramento/)
 
 ### 🔹 Reiniciar o Nginx para aplicar as mudanças
 ```bash
