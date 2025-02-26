@@ -28,13 +28,21 @@ Este projeto configura um servidor web na AWS, implementa um sistema de monitora
 7. Clique em Create VPC.  
 <br>  
   
-  
-### 2. Criação de uma Instância
+### 3. Criação de um Security Group:
+1. No console EC2 acesse "Security" Groups e crie um novo com as seguintes regras:
+1. HTTP (porta 80, TCP, 0.0.0.0/0) → Permite tráfego web.
+2. SSH (porta 22, TCP, My IP) → Para acessar via SSH.
+4. Clique em Create Security Group.
+
+![image.png](imgs/sg.png)
+
+### 4. Criação de uma Instância
 1. Acesse o AWS Management Console.
 ![image.png](imgs/acesso_ec2.png)   
 2. Vá para EC2 > Instances > Launch Instance.
 3. Escolha o nome e as tags necessárias para a criação para a da instância.
 4. Escolha da AMI baseada em Linux Ubuntu LTS (versão utilizada foi a 24.04).
+
 ![image.png](imgs/ami_ec2.png)   <br>  <br>  
 #### 🔹Key pair
 1. Na sua maquina, crie uma pasta .ssh da seguinte forma 
@@ -49,14 +57,11 @@ C:\Users\SEU-USUARIO\.ssh
 1. Em Network Settings: Selecione a VPC que você criou.
 2. Escolha uma das sub-redes públicas.
 3. Habilite a opção Auto-assign Public IP (para acesso externo via SSH).
-4. Ainda na configuração da instância, clique em Edit Security Groups.
-#### 🔹Crie um novo Security Group com as seguintes regras:
-1. HTTP (porta 80, TCP, 0.0.0.0/0) → Permite tráfego web.
-2. SSH (porta 22, TCP, My IP) → Para acessar via SSH.
-4. Clique em Create Security Group e associe à instância.
+4. Associe o Security Group criado
+
 ![alt text](imgs/configderede_ec2.png)
 
-### 3. Acessar a Instância via SSH
+### 5. Acessar a Instância via SSH
 1. No seu terminal terminal Git Bash use o seguinte comando para ajustar as permissões da sua chave:
 ````
 chmod 400 ~/.ssh/sua-chave.pem
@@ -67,15 +72,11 @@ chmod 400 ~/.ssh/sua-chave.pem
 ssh -i ~/.ssh/sua-chave.pem ubuntu@IP_DA_INSTÂNCIA
 ````
 > **Nota:**  
-Para ter o ip da sua instância acesse o ecs2 console e clique na sua instância
+Para ter o ip da sua instância acesse o ec2 console e clique na sua instância
 ![alt text](imgs/ipv4_ec2.png)
 
 3. Ao conectar o terminal devera ficar da seguinte maneira:
 ![alt text](imgs/terminal.png)<br><br>
-
-## 4. Webhook Discord
-#### Vá até o seu servidor do Discord → Configurações do Servidor → Integrações.
-![alt text](imgs/webhook.png)
 
 
 ## 🌐 2. Instalação e Configuração do Servidor Web
@@ -124,7 +125,9 @@ Exemplo de conteúdo:
 ```
 
 > **Nota:** <br>
-A pasta 'site' presente no diretório contém uma landing page criada especialmente para o projeto. No entanto, para facilitar a didática, o exemplo será algo mais enxuto. [(acesse o site)](https://github.com/IgorLGomes/Servidor-Web-com-Monitoramento)
+No diretório há uma landing page criada especialmente para o projeto. No entanto, para facilitar a didática, o exemplo de código será algo mais enxuto. [(acesso ao site feito para o projeto)](https://github.com/IgorLGomes/Servidor-Web-com-Monitoramento)
+![alt text](imgs/site-completo.png)
+
 
 ### 🔹 Reiniciar o Nginx para aplicar as mudanças
 ```bash
@@ -137,6 +140,10 @@ sudo systemctl restart nginx
 
 
 ## 📡 3. Implementação do Script de Monitoramento
+
+### 🔹 Webhook Discord
+#### Vá até o seu servidor do Discord → Configurações do Servidor → Integrações.
+![alt text](imgs/webhook.png)
 
 ### 🔹 Criar o script `monitor.py`
 ```bash
@@ -239,6 +246,7 @@ sudo systemctl start nginx
 Se tudo estiver certo, a notificação de erro não aparecerá mais.
 
 ## 🚀 Conclusão
+Chegamos ao fim do projeto, concluimos a estapa de configuração de rede do ambiente, estruturando uma VPC com subnets públicas e privadas, configuramos uma instância EC2 rodando Nginx e implementamos um sistema de monitoramento com alertas automáticos.
 Agora o servidor está configurado para rodar uma aplicação web e monitorá-la automaticamente, enviando notificações em caso de falhas.
 
 ---
