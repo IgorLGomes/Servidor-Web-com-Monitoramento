@@ -24,8 +24,10 @@ Este projeto configura um servidor web na AWS, implementa um sistema de monitora
 4. Escolha do nome para a VPC.
 5. Definição de um bloco CIDR: 10.0.0.0/16.
 6. Configuração da criação de 2 sub-redes públicas e 2 privadas.
+   
 ![image.png](imgs/configuração_vpc.png)
-7. Clique em Create VPC.  
+
+8. Clique em Create VPC.  
 <br>  
   
 ### 3. Criação de um Security Group:
@@ -125,7 +127,7 @@ Exemplo de conteúdo:
 ```
 
 > **Nota:** <br>
-No diretório há uma landing page criada especialmente para o projeto. No entanto, para facilitar a didática, o exemplo de código será algo mais enxuto. [(acesso ao site feito para o projeto)](https://github.com/IgorLGomes/Servidor-Web-com-Monitoramento)
+No diretório há uma landing page criada especialmente para o projeto. No entanto, para facilitar a didática, o exemplo de código será algo mais enxuto. [(acesso ao site feito para o projeto)]([https://github.com/IgorLGomes/Servidor-Web-com-Monitoramento](https://igorlgomes.github.io/Servidor-Web-com-Monitoramento/))
 ![alt text](imgs/site-completo.png)
 
 
